@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ReCrea X Jordi Mendez</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .small-names {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #444;
+    }
+
+    .question {
+      margin: 1.5rem 0;
+    }
+
+    .question label {
+      display: block;
+      margin: 0.5rem 0;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #007700;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #444;
+    }
+
+    footer {
+      text-align: right;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ReCrea X Jordi Mendez</h1>
+    <div class="small-names">Sara, Roser, Josep, Laia</div>
+  </header>
+
+  <main>
+    <p>
+      Queridos compañeros, han sido muchos momentos bonitos, momentos de seriedad pero lo que me llevaré de aquí es lo buenos que habéis sido conmigo. Gracias por los aprendizajes y por alegrarme el día en los momentos donde no estaba de humor. Gracias a la mama 3 por defenderme de mi tío el Josep. Gracias a mi prima Laia porque a pesar de que te veo una hora siempre me has tratado bien y sí, te perdono, porque últimamente pareces más mi jefa que mi prima. Gracias tía Roser por ayudarme en lo que he necesitado y aunque te pillé con el paraulogic yo sé que en el fondo te he caído bien. A mi tío Josep también hay que darle las gracias porque realmente sí me ayudó mucho y me sirvió de inspiración ya que aunque tuviera muchas cosas que hacer siempre repartía mucha alegría. Esto se acaba así que muchas gracias a todos porque recordaré estas prácticas súper bien.
+    </p>
+
+    <h2>Examen tipo test</h2>
+
+    <form id="testForm">
+      <div class="question">
+        <strong>1. ¿El Jordi dónde vive?</strong><br>
+        <label><input type="radio" name="q1" value="A"> A: En la barbería</label>
+        <label><input type="radio" name="q1" value="B"> B: Al lado de su casa</label>
+        <label><input type="radio" name="q1" value="C"> C: En su casa</label>
+        <label><input type="radio" name="q1" value="D"> D: Ninguna de las anteriores</label>
+      </div>
+
+      <div class="question">
+        <strong>2. ¿El Jordi tiene hermanas?</strong><br>
+        <label><input type="radio" name="q2" value="A"> A: Sí, una hermana</label>
+        <label><input type="radio" name="q2" value="B"> B: Sí, una hermana y un hermano</label>
+        <label><input type="radio" name="q2" value="C"> C: Sí, dos hermanos</label>
+        <label><input type="radio" name="q2" value="D"> D: Sí, dos hermanas</label>
+      </div>
+
+      <div class="question">
+        <strong>3. ¿El Jordi cómo se apellida?</strong><br>
+        <label><input type="radio" name="q3" value="A"> A: Jordi Aguilar</label>
+        <label><input type="radio" name="q3" value="B"> B: Jordi Mendoza</label>
+        <label><input type="radio" name="q3" value="C"> C: Jordi Méndez</label>
+        <label><input type="radio" name="q3" value="D"> D: Ninguna de las anteriores</label>
+      </div>
+
+      <button type="button" onclick="calcularNota()">Terminar examen</button>
+      <div id="resultado"></div>
+    </form>
+  </main>
+
+  <footer>
+    ReCrea X Escola del Treball
+  </footer>
+
+  <script>
+    function calcularNota() {
+      const respuestasCorrectas = {
+        q1: "B",
+        q2: "D",
+        q3: "C"
+      };
+
+      let total = 0;
+      let correctas = 0;
+
+      for (let pregunta in respuestasCorrectas) {
+        total++;
+        const seleccionada = document.querySelector(`input[name="${pregunta}"]:checked`);
+        if (seleccionada && seleccionada.value === respuestasCorrectas[pregunta]) {
+          correctas++;
+        }
+      }
+
+      const nota = (correctas / total) * 10;
+      document.getElementById("resultado").innerText = `Tu nota es: ${nota.toFixed(1)} / 10`;
+    }
+  </script>
+
+</body>
+</html>
